@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="section padding_layout_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="main_heading text_align_center">
+                        <h2>Pacientes</h2>
+                        <p class="large">Lista de documentos subidos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fecha de Subida</th>
+                                <th class="text-center">Archivos Disponibles (Descarga)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for paciente in pacientes %}
+                            <tr>
+                                <td>{{ paciente.paciente }}</td>
+                                <td>{{ paciente.fecha_subida|date:"d/m/Y H:i" }}</td>
+                                <td class="text-center">
+                                    {% if paciente.original %}
+                                        <a href="{{ paciente.original.url }}" class="bnn btn-secondary btn-xs" download>Original</a>
+                                    {% endif %}
+                                    {% if paciente.word %}
+                                        <a href="{{ paciente.word.url }}" class="bnn btn-primary btn-xs" download>Word</a>
+                                    {% endif %}
+                                    {% if paciente.pdf %}
+                                        <a href="{{ paciente.pdf.url }}" class="bnn btn-danger btn-xs" download>PDF</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center">No hay pacientes registrados todavía.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

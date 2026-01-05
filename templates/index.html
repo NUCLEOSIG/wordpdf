@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- end inner page banner -->
+<div class="section padding_layout_1">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
+      <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+          <div class="full">
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contant_form">
+              <h2 class="text_align_center">Envia un correo</h2>
+              <div class="form_section">
+                <form class="form_contant" action="mail_envia.php" method="post" >
+                  <fieldset>
+                  <div class="row">
+                  
+                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <label>Nombre y apellido: <span>*</span></label>
+                      <input type="text" name="nombre" placeholder="Nombre y apellido" class="field_custom" required>
+                      
+                    </div>
+                    <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <label>Email: <span>*</span></label>
+                      <input type="text" name="email" placeholder="Email" class="field_custom" required>
+                      
+                    </div>
+                    
+                    <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <label>Consulta:</label>
+                      <textarea name="consulta" class="field_custom"></textarea>
+                      
+                    </div>
+                    <div class="center"><input type="submit" value="Enviar" class="btn main_bt"></div>
+                  </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {% endblock content %}

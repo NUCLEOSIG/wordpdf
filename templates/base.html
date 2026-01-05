@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>Dr Jorge Lopez</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- site icons -->
+<link rel="icon" href="/static/images/fevicon/fevicon.png" type="image/gif" />
+<!-- bootstrap css -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+<!-- Site css -->
+<link rel="stylesheet" href="/static/css/style.css" />
+<!-- responsive css -->
+<link rel="stylesheet" href="/static/css/responsive.css" />
+<!-- colors css -->
+<link rel="stylesheet" href="/static/css/colors1.css" />
+<!-- custom css -->
+<link rel="stylesheet" href="/static/css/custom.css" />
+<!-- wow Animation css -->
+<link rel="stylesheet" href="/static/css/animate.css" />
+<!-- zoom effect -->
+<link rel='stylesheet' href='/static/css/hizoom.css'>
+<!-- end zoom effect -->
+{% block head %} 
+    
+{% endblock head %}
+</head>
+<body id="default_theme" class="contact_us">
+<!-- loader -->
+<div class="bg_load"> <img class="loader_animation" src="/static/images/loaders/loader_1.png" alt="#" /> </div>
+<!-- end loader -->
+<!-- header -->
+<header id="default_header" class="header_style_1">
+  <!-- header top -->
+  
+  <!-- end header top -->
+  <!-- header bottom -->
+  <div class="header_bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+          <!-- logo start -->
+          <div class="logo"> <a href="{% url 'index' %}"><img src="/static/images/logos/logo.png" alt="logo" /></a> </div>
+          <!-- logo end -->
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+          <!-- menu start -->
+          <div class="menu_side">
+            <div id="navbar_menu">
+              <ul class="first-ul">
+                <li> <a class="active" href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'lista_pacientes' %}">Mis Pacientes</a></li>
+                <li><a href="{% url 'subir_documento' %}">Subir Pacientes</a></li>
+                <li><a href="#">Horos</a></li>
+                <li> <a href="#">Sucursales</a></li>
+                <li> <a href="#">Servicios</a>
+                  <ul>
+                    <li><a href="#">Todos los Servicios</a></li>
+                  </ul>
+                </li>
+                  
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+
+          <!-- menu end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- header bottom end -->
+</header>
+<!-- end header -->
+<!-- inner page banner -->
+ {% if messages %}
+      <div class="row mt-3 mb-3">
+        <div class="col-12">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      </div>
+{% endif %} 
+      
+{% block content %} 
+      
+{% endblock content %}
+
+<!-- section -->
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="full">
+          <div class="contact_us_section">
+            <div class="call_icon"> <img src="/static/images/it_service/contac.fw.png" alt="#" /> </div>
+            <div class="inner_cont">
+              <h2>Dr Jorge Lopez</h2>
+              <p>Tomografías simple y contrastada, Ultrasonidos, Rayos X, Densitometrías, Mastografías, Electroencefalograma, Papanicolau, Colposcopias.</p>
+            </div>
+            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="#">Sucursales</a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end section -->
+<!-- section -->
+<footer class="footer_style_2">
+  <div class="container-fuild">
+    <div class="row center" >
+      
+      <div class="footer_blog">
+        <div class="row">
+          
+         <div class="col-md-6">
+            <div class="main-heading left_text">
+              <h2>Contactanos</h2>
+            </div>
+            <p>Servi Plaza Akishino. Blvd. Principe Akishino Esq. Calle Maya Sol Num. 210 Fracc. Rinconada del Carmen, Tapachula, Mexico, 30796 <br>
+              <span style="font-size:18px;"><a href="tel:962 628 4556">962 628 4556</a></span></p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="cprt">
+        <p>Dr Jorge Lopez © Copyrights <script>
+                document.write(new Date().getFullYear());
+              </script>
+           Design by https://www.mxsig.com/</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- end footer -->
+<!-- js section -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- menu js -->
+<script src="/static/js/menumaker.js"></script>
+<!-- wow animation -->
+<script src="/static/js/wow.js"></script>
+<!-- custom js -->
+<script src="/static/js/custom.js"></script>
+
+<!-- end google map js -->
+<!-- zoom effect -->
+<script src='/static/js/hizoom.js'></script>
+<script>
+        $('.hi1').hiZoom({
+            width: 300,
+            position: 'right'
+        });
+        $('.hi2').hiZoom({
+            width: 400,
+            position: 'right'
+        });
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+
+        if (uploadArea) {
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                this.classList.remove('dragover');
+            });
+
+            fileInput.addEventListener('change', function() {
+                fileName.textContent = this.files.length > 0 ? 'Archivo: ' + this.files[0].name : '';
+            });
+        }
+    });
+</script>
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            /* Opcional: Muestra una notificación o alerta */
+            const alertDiv = document.createElement('div');
+            alertDiv.innerHTML = '¡Enlace copiado al portapapeles!';
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.bottom = '20px';
+            alertDiv.style.right = '20px';
+            alertDiv.style.padding = '10px 20px';
+            alertDiv.style.backgroundColor = '#28a745';
+            alertDiv.style.color = 'white';
+            alertDiv.style.borderRadius = '5px';
+            alertDiv.style.zIndex = '1000';
+            document.body.appendChild(alertDiv);
+            setTimeout(() => document.body.removeChild(alertDiv), 2000);
+        }, function(err) {
+            console.error('Error al copiar el texto: ', err);
+        });
+    }
+</script>
+</body>
+</html>

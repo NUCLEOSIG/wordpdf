@@ -1,0 +1,43 @@
+/* p:\wordpdf\static\css\custom.css (Añadir al final del archivo) */
+
+/* Botón extra pequeño para tablas */
+.btn-xs {
+  padding: 0.01rem 0.1rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  border-radius: 0.2rem;
+}
+
+/* Estilos para el área de subida de archivos */
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+    position: relative;
+}
+.upload-area:hover, .upload-area.dragover {
+    border-color: #039ee3;
+    background-color: #f8f9fa;
+}
+.upload-area i {
+    font-size: 48px;
+    color: #039ee3;
+    margin-bottom: 15px;
+}
+.upload-area input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+/*------------------------------------------------------------------
+    File Name: custom.css
+-------------------------------------------------------------------*/
+
+/** ADD YOUR AWESOME CODES HERE **/

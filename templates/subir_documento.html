@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 style="text-align: center;">Subir Nuevo Paciente</h2>
+            <hr>
+            <!-- IMPORTANTE: enctype="multipart/form-data" es crucial para la subida de archivos -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset>
+                  <div class="row">
+                  
+                    <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fa fa-upload"></i>
+                            <p>Arrastra y suelta el documento aquí, o haz clic para seleccionarlo.</p>
+                            <input type="file" name="original" id="fileInput" class="field_custom" required>
+                            <p id="fileName"></p>
+                        </div>
+                    </div>
+                  </div>
+                  </fieldset>
+                <button type="submit" class="btn btn-primary btn-block">PROCESAR</button>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered" >
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fecha de Subida</th>
+                                <th class="text-center">Archivos Disponibles (Descarga)</th>
+                            </tr>
+                        </thead>
+                        <tbody style="padding: 0%;">
+                            {% for paciente in pacientes %}
+                            <tr>
+                                <td>{{ paciente.paciente }}</td>
+                                <td>{{ paciente.fecha_subida|date:"d/m/Y H:i" }}</td>
+                                <td class="text-center">
+                                    {% if paciente.original %}
+                                        <a href="{{ paciente.original.url }}" class="bnn btn-secondary btn-sm" download>Original</a>
+                                        <button onclick="copyToClipboard('{{ request.scheme }}://{{ request.get_host }}{{ paciente.original.url }}')" title="Copiar enlace"><i class="fa fa-copy"></i></button>
+                                    {% endif %}
+                                    {% if paciente.word %}
+                                        <a href="{{ paciente.word.url }}" class="bnn btn-primary btn-sm" download>Word</a>
+                                        <button onclick="copyToClipboard('{{ request.scheme }}://{{ request.get_host }}{{ paciente.word.url }}')" title="Copiar enlace"><i class="fa fa-copy"></i></button>
+                                    {% endif %}
+                                    {% if paciente.pdf %}
+                                        <a href="{{ paciente.pdf.url }}" class="bnn btn-danger btn-sm" download>PDF</a>
+                                        <button onclick="copyToClipboard('{{ request.scheme }}://{{ request.get_host }}{{ paciente.pdf.url }}')" title="Copiar enlace"><i class="fa fa-copy"></i></button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center">No hay pacientes registrados todavía.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}
