@@ -17,3 +17,8 @@ Soy desarrollador FullStack hace más de 10 años principalmente con PHP, JavaSc
 
 - [@aespiritu](https://www.mxsig.com)
 
+
+## Screenshots
+
+![App Screenshot](wordpdf.jpg)
+
